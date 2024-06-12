@@ -65,17 +65,17 @@ FROM orders.TempOrderDetails
 ON CONFLICT (BrandName) DO NOTHING;
 
 
+INSERT INTO CountriesOfOrigin (CountryName)
+SELECT DISTINCT CoutryOfOrigin
+FROM orders.TempOrderDetails
+ON CONFLICT (CountryName) DO NOTHING;
+
+
 INSERT INTO Manufacturers (ManufacturerName, CountryID)
 SELECT DISTINCT Manufacturer, c.CountryID
 FROM orders.TempOrderDetails tod
 JOIN CountriesOfOrigin c ON tod.CoutryOfOrigin = c.CountryName
 ON CONFLICT (ManufacturerName) DO NOTHING;
-
-
-INSERT INTO CountriesOfOrigin (CountryName)
-SELECT DISTINCT CoutryOfOrigin
-FROM orders.TempOrderDetails
-ON CONFLICT (CountryName) DO NOTHING;
 
 
 INSERT INTO Users (username, email, address, phone)
@@ -133,6 +133,7 @@ JOIN Users u ON tpr.UserFullName = u.username
 WHERE tpr.Rating >= 1 AND tpr.Rating <= 5;
 
 
+
 select * from Users;
 select * from Categories;
 select * from Brands;
@@ -141,6 +142,7 @@ select * from CountriesOfOrigin;
 select * from Products;
 select * from Orders;
 select * from OrderDetails;
+select * from ProductRatings;
 select * from ProductRatings;
 
 
