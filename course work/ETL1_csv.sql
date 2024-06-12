@@ -20,7 +20,6 @@ CREATE TABLE orders.TempOrderDetails (
     CoutryOfOrigin text,
     Price numeric(10,2),
     Quantity int,
-	UnitPrice numeric(10,2),
     AvailabilityStatus boolean
 );
 
@@ -36,7 +35,7 @@ DELIMITER ','
 CSV HEADER
 ENCODING 'WIN1251';
 
-COPY orders.TempOrderDetails(OrderDetailsID, OrderID, ProductName, Сategory, Brand, Manufacturer, CoutryOfOrigin, Price, Quantity, UnitPrice, AvailabilityStatus)
+COPY orders.TempOrderDetails(OrderDetailsID, OrderID, ProductName, Сategory, Brand, Manufacturer, CoutryOfOrigin, Price, Quantity, AvailabilityStatus)
 FROM 'C:\course work\order_details.csv'
 DELIMITER ','
 CSV HEADER
@@ -99,6 +98,7 @@ JOIN Manufacturers m ON tod.Manufacturer = m.ManufacturerName
 ON CONFLICT (ProductName, CategoryID, BrandID, ManufacturerID) DO NOTHING;
 
 
+
 INSERT INTO Orders (UserID, OrderDate, Status, TotalCost)
 SELECT 
     u.UserID,
@@ -108,9 +108,21 @@ SELECT
 FROM orders.TempOrders o
 JOIN Users u ON o.Email = u.email
 LEFT JOIN orders.TempOrderDetails tod ON o.OrderID = tod.OrderID
-GROUP BY u.UserID, o.OrderDate, o.Status;
+GROUP BY o.OrderID, u.UserID, o.OrderDate, o.Status;
 
 
+--Insert data into Orders table
+INSERT INTO Orders (UserID, OrderDate, Status, TotalCost)
+SELECT 
+    u.UserID,
+    o.OrderDate,
+    o.Status,
+    0 AS TotalCost
+FROM orders.TempOrders o
+JOIN Users u ON o.Email = u.email;
+
+
+--Insert data into OrderDetails table
 INSERT INTO OrderDetails (OrderID, ProductID, Quantity, UnitPrice)
 SELECT 
     o.OrderID,
@@ -120,6 +132,14 @@ SELECT
 FROM orders.TempOrderDetails tod
 JOIN Orders o ON tod.OrderID = o.OrderID
 JOIN Products p ON tod.ProductName = p.ProductName;
+
+--Update TotalCost in Orders table
+UPDATE Orders
+SET TotalCost = (
+    SELECT COALESCE(SUM(UnitPrice), 0)
+    FROM OrderDetails
+    WHERE OrderDetails.OrderID = Orders.OrderID
+);
 
 
 INSERT INTO ProductRatings (ProductID, UserID, Rating)
@@ -133,7 +153,6 @@ JOIN Users u ON tpr.UserFullName = u.username
 WHERE tpr.Rating >= 1 AND tpr.Rating <= 5;
 
 
-
 select * from Users;
 select * from Categories;
 select * from Brands;
@@ -143,6 +162,4 @@ select * from Products;
 select * from Orders;
 select * from OrderDetails;
 select * from ProductRatings;
-select * from ProductRatings;
-
 
