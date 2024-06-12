@@ -1,0 +1,61 @@
+ProductName,User FullName,Rating
+ECG Machine,Alex Miller,1
+ECG Machine,George Martinez,4
+Thermometer,Alice Kelly,3
+Thermometer,Michael Thomas,1
+Thermometer,Carlos Garcia,2
+Surgical Instruments,John Doe,3
+Thermometer,Michael Thomas,2
+Thermometer,Eric Walker,2
+Surgical Instruments,Eric Walker,1
+Thermometer,Robert Williams,1
+Surgical Instruments,Lisa Smith,4
+ECG Machine,Tom White,3
+ECG Machine,Chris Harris,5
+Thermometer,Robert Williams,1
+Thermometer,Carlos Garcia,3
+Oximeter,George Martinez,1
+Surgical Instruments,Tom White,2
+X-Ray Machine,Emily Johnson,3
+Oximeter,Eric Walker,3
+Surgical Instruments,Rachel Clark,3
+Thermometer,John Doe,5
+Oximeter,Helen Nelson,5
+Thermometer,Alex Miller,1
+Oximeter,Anna Davis,5
+Thermometer,Chris Harris,4
+Surgical Instruments,Chris Harris,3
+Oximeter,Michael Thomas,5
+ECG Machine,Susan Jackson,4
+Thermometer,Anna Davis,3
+X-Ray Machine,George Martinez,2
+Thermometer,Emily Johnson,1
+X-Ray Machine,Juan Perez,1
+X-Ray Machine,Chris Harris,5
+Thermometer,Alice Kelly,5
+Oximeter,Michael Thomas,5
+X-Ray Machine,Anna Davis,3
+Surgical Instruments,Eric Walker,2
+X-Ray Machine,Brian Wilson,5
+Oximeter,Richard Lopez,3
+Thermometer,John Doe,3
+X-Ray Machine,Juan Perez,3
+Surgical Instruments,Carlos Garcia,3
+Oximeter,Tom White,3
+ECG Machine,John Doe,3
+Oximeter,Brian Wilson,1
+Thermometer,Lisa Smith,5
+X-Ray Machine,Carlos Garcia,2
+Oximeter,Michael Thomas,3
+Surgical Instruments,George Martinez,2
+Thermometer,Maria Rodriguez,3
+Gloves,Anna Davis,4
+Gloves,Richard Lopez,5
+Stethoscope,Emily Johnson,3
+Stethoscope,Maria Rodriguez,2
+Blood Pressure Monitor,Alice Kelly,4
+Blood Pressure Monitor,Carlos Garcia,5
+Surgical Mask,Richard Lopez,4
+Surgical Mask,Eric Walker,3
+Medical Gown,Lisa Smith,5
+Medical Gown,Eric Walker,4
