@@ -98,19 +98,6 @@ JOIN Manufacturers m ON tod.Manufacturer = m.ManufacturerName
 ON CONFLICT (ProductName, CategoryID, BrandID, ManufacturerID) DO NOTHING;
 
 
-
-INSERT INTO Orders (UserID, OrderDate, Status, TotalCost)
-SELECT 
-    u.UserID,
-    o.OrderDate,
-    o.Status,
-    COALESCE(SUM(tod.Price * tod.Quantity), 0) AS TotalCost
-FROM orders.TempOrders o
-JOIN Users u ON o.Email = u.email
-LEFT JOIN orders.TempOrderDetails tod ON o.OrderID = tod.OrderID
-GROUP BY o.OrderID, u.UserID, o.OrderDate, o.Status;
-
-
 --Insert data into Orders table
 INSERT INTO Orders (UserID, OrderDate, Status, TotalCost)
 SELECT 
