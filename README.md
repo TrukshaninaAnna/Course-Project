@@ -1,7 +1,7 @@
-### Course-Project
+# Course-Project
 
 ## Data Warehouse Project for Medical Equipment Store
-# 1. Overview of the Main Operational Table
+### 1. Overview of the Main Operational Table
 The primary operational table stores detailed information about orders placed in the online medical equipment store. This table is crucial for the day-to-day operations of the store and contains various data points necessary for processing orders, tracking products, and maintaining customer information.
 Main Table: Orders
 •	Columns:
@@ -11,7 +11,7 @@ o	OrderDate: The date and time the order was placed.
 o	Status: The current status of the order (e.g., shipped, pending).
 o	TotalCost: The total cost of the order.
 •	This table tracks every order made by a user, including the status and total cost. It's crucial for operational reporting and serves as the primary source of data for the Sales_Fact table in the Data Warehouse.
-# 2. Data Warehouse (DWH)
+### 2. Data Warehouse (DWH)
 The Data Warehouse is designed to support analytical reporting and querying of historical data related to sales, users, and products. It stores both dimensional and fact data, enabling complex analyses and business intelligence (BI) reports.
 Data Warehouse Schema:
 The DWH schema consists of dimension and fact tables optimized for efficient data querying and analysis.
@@ -28,7 +28,7 @@ Fact Tables:
 •	ProductRatings_Fact: Stores product rating data provided by users, with fields for product IDs, user IDs, and rating scores.
 SCD (Slowly Changing Dimensions) Implementation:
 •	SCD Type 2 is implemented for the DimProducts table to maintain historical records of product data. This ensures changes in product information (e.g., brand, manufacturer) are tracked over time.
-# 3. ETL Processes (Extract, Transform, Load)
+### 3. ETL Processes (Extract, Transform, Load)
 Two key ETL processes were developed to move data from the operational system into the Data Warehouse:
 First ETL Process:
 •	Source: CSV files containing raw order, order detail, and product rating data.
