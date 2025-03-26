@@ -18,15 +18,6 @@ CREATE TABLE datawarehouse.DimDate (
 	CONSTRAINT unique_date UNIQUE (Date)
 );
 
--- DimUsers table
-CREATE TABLE datawarehouse.DimUsers (
-    UserID INT PRIMARY KEY,
-    Username VARCHAR(100) NOT NULL,
-    Email VARCHAR(100),
-    Address VARCHAR(255),
-    Phone VARCHAR(20)
-);
-
 -- Dimantion Country of Origin table
 CREATE TABLE datawarehouse.DimCountries (
     CountryID INT PRIMARY KEY,
@@ -146,16 +137,6 @@ GROUP BY dd.Date
 ORDER BY dd.Date;
 
 
-CREATE VIEW datawarehouse.sales_by_user AS
-SELECT 
-    du.UserID,
-    du.Username,
-    COUNT(sf.SalesID) AS NumberOfSales,
-    SUM(sf.TotalCost) AS TotalSales
-FROM datawarehouse.Sales_Fact sf
-JOIN datawarehouse.DimUsers du ON sf.UserID = du.UserID
-GROUP BY du.UserID, du.Username
-ORDER BY du.UserID;
 	
 	
 CREATE VIEW datawarehouse.sales_by_country_of_origin AS
