@@ -23,12 +23,6 @@ FROM Manufacturers
 ON CONFLICT (ManufacturerID) DO NOTHING;
 
 
-INSERT INTO datawarehouse.DimUsers (UserID, Username, Email, Address, Phone)
-SELECT DISTINCT UserID, Username, Email, Address, Phone
-FROM Users
-ON CONFLICT (UserID) DO NOTHING;
-
-
 INSERT INTO datawarehouse.DimDate (Date, Year, Month, Day, Quarter)
 SELECT DISTINCT OrderDate, EXTRACT(YEAR FROM OrderDate), EXTRACT(MONTH FROM OrderDate), EXTRACT(DAY FROM OrderDate), EXTRACT(QUARTER FROM OrderDate)
 FROM Orders
